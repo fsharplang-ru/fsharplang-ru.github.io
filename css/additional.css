@@ -26,8 +26,8 @@
   text-align: center;
 }
 .floating-logo img {
-  width: 190px;
-  height: 190px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -61,7 +61,9 @@
 .b {
   font-weight: bold;
   margin-top: 3px;
+  margin-bottom: 3px;
   text-transform: uppercase;
+  text-align: center;
 }
 .managed-code-block, .managed-code-block code {
   font-size: 40px;
