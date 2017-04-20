@@ -15,23 +15,22 @@
 .front-bgr {
   background-position: center center;
   background-size: cover;
+  padding: 60px 0;
 }
 .front-bgr .shadowed {
-  text-shadow: 1px 1px 0 rgba(0,0,0,.2), -1px 2px 1px rgba(0,0,0,.2)
+  text-shadow: 0 3px 6px rgba(0,0,0,.4);
 }
 .light {
   color: white;
 }
 .floating-logo {
-  text-align: center;
+  text-align: right;
 }
 .floating-logo img {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
   position: absolute;
+  transform: translate(-100%, -50%);
 }
 .code {
   text-shadow: none!important;
@@ -78,5 +77,9 @@
   float: none;
 }
 code {
-  margin-top: -20px;
+  padding: 0px!important;
+}
+#monaco-container {
+  width: 100%;
+  height: 200px;
 }

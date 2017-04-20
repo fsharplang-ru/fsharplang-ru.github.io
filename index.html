@@ -10,7 +10,7 @@
     <script src="js/highlight.pack.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript" src="monaco/min/vs/loader.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -38,12 +38,8 @@
                 <li><a href="https://t.me/fsharp_chat" target="_blank">Telegram</a></li>
               </ul>
             </li>
-            <li>
-              <a href="http://fsharp.org/learn.html" target="_blank">Уроки</a>
-            </li>
-            <li>
-              <a href="http://fsharp.org/" target="_blank">Разработка</a>
-            </li>
+            <li><a href="http://fsharp.org/learn.html" target="_blank">Уроки</a></li>
+            <li><a href="http://fsharp.org/" target="_blank">Разработка</a></li>
           </ul>
         </div>
       </div>
@@ -60,7 +56,6 @@
             </p>
             <p>
               <a class="btn btn-info btn-lg">Узнать больше о F#</a>
-              <br /> <br/>
             </p>
           </div>
           <div class="col-sm-5">
@@ -76,34 +71,37 @@
     </div>
     <div>
       <div class="container content-width">
-        <h1 class="margin-top text-center">
-          Как это выглядит?
+        <h1 class="margin-top margin-bottom">
+          Как выглядит F#?
+          <small>
+            Самые простые примеры.
+          </small>
         </h1>
-        <ul class="nav nav-tabs text-center custom-tabs">
+        <ul class="nav nav-tabs">
           <li class="active"><a href="#one" data-toggle="tab" aria-expanded="true">Простой и понятный код</a></li>
           <li class=""><a href="#two" data-toggle="tab" aria-expanded="false">Лаконичный синтаксис</a></li>
           <li class=""><a href="#three" data-toggle="tab" aria-expanded="false">Мощная система типов</a></li>
         </ul>
         <div id="myTabContent" class="tab-content">
           <div class="tab-pane fade active in" id="one">
-            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">    [&#60;EntryPoint&#62;]
-    let main argv = 
-        printfn "%A" argv
-        0
+            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">[&#60;EntryPoint&#62;]
+let main argv = 
+    printfn "%A" argv
+    0
             </code></pre>
           </div>
           <div class="tab-pane fade" id="two">
-            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">    let rec fib n a b = match n with
-        | 0 -> a
-        | 1 -> b
-        | _ -> fib (n - 1) b (a + b)
+            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">let rec fib n a b = match n with
+    | 0 -> a
+    | 1 -> b
+    | _ -> fib (n - 1) b (a + b)
             </code></pre>
           </div>
           <div class="tab-pane fade" id="three">
             <pre class="margin-top managed-code-block"><code class="fsharp code-holder">type ContactInfo = 
     | EmailOnly of EmailInfo
-    | PostOnly of PostalInfo
-    | EmailPost of EmailInfo * PostalInfo
+    | PostOnly of PostInfo
+    | EmailPost of EmailInfo * PostInfo
             </code></pre>
           </div>
         </div>
@@ -111,8 +109,11 @@
     </div>
     <div class="dark-background">
       <div class="container content-width">
-        <h1 class="light margin-top text-center">
-        Почему F#?
+        <h1 class="light margin-top">
+          Почему F#?
+          <small>
+            Несколько причин попробовать этот язык.
+          </small>
         </h1>
         <div class="row margin-top margin-bottom">
           <div class="col-sm-3 text-center">
@@ -162,28 +163,64 @@
         </div>
       </div>
     </div>
-    <div class="light dark-background">
+    <div>
       <div class="container content-width">
-        <h1 class="margin-bottom text-center">
-          Обучающие видео
+        <h1 class="margin-top margin-bottom">
+          Попробуйте сами!
+          <small>
+            Скомпилируйте свой первый F# скрипт онлайн.
+          </small>
         </h1>
         <div class="row">
-          <div class="col-sm-4">
-            <iframe height="250" src="https://www.youtube.com/embed/4IP_E7efGWE?ecver=1" frameborder="0" allowfullscreen></iframe>
+          <div class="col-sm-7">
+            <div id="monaco-container"></div>
+            <a id="build-run-button" class="btn btn-info margin-top margin-bottom">
+              Собрать и запустить
+            </a>
           </div>
-          <div class="col-sm-4">
-            <iframe height="250" src="https://www.youtube.com/embed/4IP_E7efGWE?ecver=1" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <div class="col-sm-4">
-            <iframe height="250" src="https://www.youtube.com/embed/4IP_E7efGWE?ecver=1" frameborder="0" allowfullscreen></iframe>
+          <div class="col-sm-5">
+            <p>
+              <b>
+                ВЫВОД:
+              </b>
+              <p>
+                <code id="run-result-box">
+                  А тут будет вывод. Например с run.glot.io, но нужен бэкенд, чтобы безопасно выполнять кроссдоменные аякс-запросы.
+                </code>
+              </p>
+            </p>
           </div>
         </div>
       </div>
     </div>
     <div class="light dark-background">
-      <div class="container content-width text-center">
+      <div class="container content-width">
+        <h1 class="margin-bottom">
+          Обучающие видео
+          <small>
+            Уроки, которые помогут вам научиться F#!
+          </small>
+        </h1>
+        <div class="row">
+          <div class="col-sm-4">
+            <iframe height="220" src="https://www.youtube.com/embed/Teak30_pXHk?ecver=1" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="col-sm-4">
+            <iframe height="220" src="https://www.youtube.com/embed/hsTmLhnzRhE?ecver=1" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <div class="col-sm-4">
+            <iframe height="220" src="https://www.youtube.com/embed/PFWYwr7Hhhg?ecver=1" frameborder="0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="light dark-background">
+      <div class="container content-width">
         <h1 class="margin-top margin-bottom">
           Сообщество
+          <small>
+            Горячие обсуждения и ответы на ваши вопросы в наших чатах!
+          </small>
         </h1>
         <div>
           <a href="https://t.me/fsharp_chat" class="btn btn-info">Telegram</a> &nbsp; 
@@ -196,5 +233,65 @@
         &nbsp;
       </div>
     </div>
+    <script type="text/javascript">
+      (function($) {
+
+        // Init highlight.JS for syntax highlighting  
+        hljs.initHighlightingOnLoad();
+
+        // Get links to needed elements
+        const monacoContainer = $('#monaco-container');
+        const runButton = $("#build-run-button");
+        const resultBox = $("#run-result-box");
+
+        // Set initial content of Monaco editor
+        const initialCodeContent = 
+`// Точка входа приложения, эквивалент main()
+[<EntryPoint>]
+let main argv = 
+    printfn "%A" argv
+    System.Console.WriteLine("Hello from F#")
+    0 // возвращает код завершения приложения\n\n\n
+        `;
+
+        // Launch Monaco online editor
+        require.config({ paths: { 'vs': 'monaco/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+          window.editor = monaco.editor.create(monacoContainer[0], {
+            value: initialCodeContent,
+            theme: 'vs',
+            language: 'fsharp'
+          });
+        });
+
+        // Register events
+        runButton.click(function() {
+          const code = window.editor.getValue();
+          const url = 'https://run.glot.io/languages/fsharp';
+          const codeString = `{"files": [{"name": "main.py", "content": "` + code + `"}]}`;
+
+          alert(code + `
+            Для выполнения кода на run.glot.io необходима серверная часть.
+          `);
+
+          /*
+          $.ajax({
+            type: 'GET',
+            url: `https://run.glot.io/languages`,
+            /*headers: {
+              "Authorization": "Token 0123456-789a-bcde-f012-3456789abcde",
+              "Content-type": "application/json",
+              "Access-Control-Allow-Origin": "*"
+            }
+            data: `{"files": [{"name": "main.py", "content": "print(42)"}]}`
+          }).done(function(response) { 
+            alert(response);
+          });
+          */
+
+        });
+
+      })($);
+    </script>
   </body>
 </html>
