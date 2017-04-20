@@ -13,7 +13,6 @@
   height: 42px;
 }
 .front-bgr {
-  background-image: url(../img/mock.jpg);
   background-position: center center;
   background-size: cover;
 }
