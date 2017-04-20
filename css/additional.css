@@ -13,7 +13,8 @@
   height: 42px;
 }
 .front-bgr {
-  background: #378bba;
+  background-image: url(../img/mock.png);
+  background-position: center center;
   background-size: cover;
 }
 .front-bgr .shadowed {
