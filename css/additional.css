@@ -18,7 +18,7 @@
   padding: 65px 0;
 }
 .front-bgr .shadowed {
-  text-shadow: 0 3px 6px rgba(0,0,0,.4);
+  text-shadow: 0 3px 6px rgba(0,0,0,.2);
 }
 .light {
   color: white;
@@ -81,12 +81,13 @@
 code {
   padding: 0px!important;
 }
-h1 {
-  word-wrap: break-word;
-}
 #monaco-container {
   width: 100%;
   height: 200px;
+}
+.secondary-title {
+  font-size: 20px!important;
+  color: #dedede;
 }
 
 

@@ -70,6 +70,8 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  font-weight: 200!important;
+  word-wrap: break-word;
 }
 mark {
   background: #ff0;
@@ -4969,7 +4971,7 @@ a.badge:focus {
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 23px;
-  font-weight: 200;
+  font-weight: 400;
 }
 .jumbotron > hr {
   border-top-color: #cfd9db;
