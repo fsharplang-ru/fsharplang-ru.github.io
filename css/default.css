@@ -97,3 +97,19 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-strong {
   font-weight: bold;
 }
+
+#run-result-box {
+  white-space: pre;
+}
+
+.code-box.success {
+  color: #0f0;
+}
+
+.code-box.warning {
+  color: #ff0;
+}
+
+.code-box.error {
+  color: #f00;
+}

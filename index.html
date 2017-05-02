@@ -184,11 +184,12 @@ let main argv =
               <b>
                 ВЫВОД:
               </b>
-              <p class="margin-bottom">
-                <code id="run-result-box">
-                  А тут будет вывод. Например с run.glot.io, но нужен бэкенд, чтобы безопасно выполнять кроссдоменные аякс-запросы.
-                </code>
-              </p>
+              <div class="margin-bottom">
+                <div id="run-status-box" class="code-box"></div>
+                <div id="run-warnings-box" class="code-box warning"></div>
+                <div id="run-errors-box" class="code-box error"></div>
+                <code id="run-result-box"></code>
+              </div>
             </p>
           </div>
         </div>
@@ -229,6 +230,9 @@ let main argv =
         // Get links to needed elements
         const monacoContainer = $('#monaco-container');
         const runButton = $("#build-run-button");
+        const statusBox = $('#run-status-box');
+        const warningsBox = $('#run-warnings-box');
+        const errorsBox = $('#run-errors-box');
         const resultBox = $("#run-result-box");
 
         // Set initial content of Monaco editor
@@ -237,7 +241,7 @@ let main argv =
 [<EntryPoint>]
 let main argv =
     printfn "%A" argv
-    System.Console.WriteLine("Hello from F#")
+    System.Console.WriteLine("Привет, мир F#")
     0 // возвращает код завершения приложения\n\n\n
         `;
 
@@ -253,29 +257,47 @@ let main argv =
 
         // Register events
         runButton.click(function() {
-          const code = window.editor.getValue();
-          const url = 'https://run.glot.io/languages/fsharp';
-          const codeString = `{"files": [{"name": "main.py", "content": "` + code + `"}]}`;
+          const enterErrorState = () => {
+            statusBox.text('ⓧ Ошибка').removeClass('success').removeClass('warning').addClass('error');
+          };
+          const enterWarningState = () => {
+            statusBox.text('⚠ Предупреждение') .removeClass('success').addClass('warning').removeClass('error');
+          };
+          const enterSuccessState = () => {
+            statusBox.text('✔ Успех').addClass('success').removeClass('warning').removeClass('error');
+          };
 
-          alert(code + `
-            Для выполнения кода на run.glot.io необходима серверная часть.
-          `);
+          const program = window.editor.getValue();
+          const url = 'http://rextester.com/rundotnet/api';
+          const fsharp = 3; // in rextester encoding
+          const params = {
+            LanguageChoice: fsharp,
+            Program: program
+          };
 
-          /*
+          runButton.addClass('disabled');
           $.ajax({
-            type: 'GET',
-            url: `https://run.glot.io/languages`,
-            /*headers: {
-              "Authorization": "Token 0123456-789a-bcde-f012-3456789abcde",
-              "Content-type": "application/json",
-              "Access-Control-Allow-Origin": "*"
+            type: 'POST',
+            url,
+            data: params
+          }).done(({Warnings, Errors, Result}) => {
+            warningsBox.text(Warnings);
+            errorsBox.text(Errors);
+            resultBox.text(Result);
+            if (Errors) {
+              enterErrorState();
+            } else if (Warnings) {
+              enterWarningState();
+            } else {
+              enterSuccessState();
             }
-            data: `{"files": [{"name": "main.py", "content": "print(42)"}]}`
-          }).done(function(response) {
-            alert(response);
+          }).fail(() => {
+            warningsBox.clear();
+            errorsBox.text('ⓧ Сетевая ошибка. Пожалуйста, повторите запрос.');
+            enterErrorState();
+          }).always(() => {
+            runButton.removeClass('disabled');
           });
-          */
-
         });
 
       })($);
