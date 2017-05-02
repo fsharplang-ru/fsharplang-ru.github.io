@@ -14,6 +14,7 @@
     <script type="text/javascript" src="./monaco/min/vs/loader.js"></script>
   </head>
   <body>
+
     <nav class="navbar navbar-default">
       <div class="container-fluid content-width">
         <div class="navbar-header">
@@ -45,7 +46,8 @@
         </div>
       </div>
     </nav>
-    <div class="front-bgr" style="background-image: url(img/mock.jpg);">
+
+    <section class="front-bgr" style="background-image: url(img/mock.jpg);">
       <div class="jumbotron content-width container">
         <div class="light row">
           <div class="col-sm-7">
@@ -64,13 +66,24 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="container content-width">
-      <div class="floating-logo">
-        <img src="img/min_logo.png" />
+    </section>
+
+    <section class="blue-background">
+      <div class="container content-width">
+        <div class="row light">
+          <div class="col-sm-10">
+            <p class="light note margin-top margin-bottom">
+              Вы находитесь на сайте русскоязычного сообщества F# разработчиков! F# — это мультипарадигмальный язык программирования из семейства языков .NET Framework, поддерживающий функциональное программирование в дополнение к императивному и объектно-ориентированному программированию. 
+            </p>
+          </div>
+          <div class="col-sm-2 text-center">
+            <img class="logo-note" src="img/min_logo.png"/>
+          </div>
+        </div>
       </div>
-    </div>
-    <div>
+    </section>
+
+    <section>
       <div class="container content-width">
         <h1 class="margin-top margin-bottom">
           Как выглядит F#?
@@ -107,10 +120,11 @@ let main argv =
           </div>
         </div>
       </div>
-    </div>
-    <div class="dark-background">
+    </section>
+
+    <section class="dark-background">
       <div class="container content-width">
-        <h1 class="light margin-top">
+        <h1 class="margin-top">
           Почему F#?
           <small>
             Несколько причин попробовать этот язык.
@@ -121,8 +135,6 @@ let main argv =
             <div class="panel panel-default">
               <div class="panel-body">
                 <i class="fa fa-desktop icon-image" aria-hidden="true"></i>
-              </div>
-              <div class="panel-footer text-left">
                 <p class="b">Кросплатформенность</p>
                 F# работает на Linux, OS X, iOS, Windows, Android, а также в браузерах.
               </div>
@@ -132,8 +144,6 @@ let main argv =
             <div class="panel panel-default">
               <div class="panel-body">
                 <i class="fa fa-code-fork icon-image" aria-hidden="true"></i>
-              </div>
-              <div class="panel-footer text-left">
                 <p class="b">Открытость</p>
                 F# является бесплатным проектом с открытым исходным кодом.
               </div>
@@ -143,8 +153,6 @@ let main argv =
             <div class="panel panel-default">
               <div class="panel-body">
                 <i class="fa fa-gears icon-image" aria-hidden="true"></i>
-              </div>
-              <div class="panel-footer text-left">
                 <p class="b">Активная разработка</p>
                 F# активно поддерживают как разработчики, так и большие корпорации.
               </div>
@@ -154,8 +162,6 @@ let main argv =
             <div class="panel panel-default">
               <div class="panel-body">
                 <i class="fa fa-code icon-image" aria-hidden="true"></i>
-              </div>
-              <div class="panel-footer text-left">
                 <p class="b">Write less — do more</p>
                 Выбери F# и в несколько раз увеличь свою производительность!
               </div>
@@ -163,8 +169,9 @@ let main argv =
           </div>
         </div>
       </div>
-    </div>
-    <div>
+    </section>
+
+    <section>
       <div class="container content-width">
         <h1 class="margin-top margin-bottom">
           Попробуйте сами!
@@ -194,8 +201,9 @@ let main argv =
           </div>
         </div>
       </div>
-    </div>
-    <div class="light dark-background">
+    </section>
+
+    <section class="dark-background">
       <div class="container content-width">
         <h1 class="margin-bottom">
           Обучающие видео
@@ -215,12 +223,8 @@ let main argv =
           </div>
         </div>
       </div>
-    </div>
-    <div class="light dark-background">
-      <div class="container content-width">
-        &nbsp;
-      </div>
-    </div>
+    </section>
+
     <script type="text/javascript">
       (function($) {
 
