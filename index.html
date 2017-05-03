@@ -31,17 +31,20 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <li><a class="scrollable" href="#code-snippets">Примеры кода</a></li>
+            <li><a class="scrollable" href="#top-reasons">Почему F#</a></li>
+            <li><a class="scrollable" href="#online-compiler">Компилятор</a></li>
+            <li><a class="scrollable" href="#video-lessons">Уроки</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                 Сообщество <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="https://gitter.im/fsharplang_ru/Lobby" target="_blank">Gitter</a></li>
-                <li><a href="https://t.me/fsharp_chat" target="_blank">Telegram</a></li>
+                <li><a href="https://gitter.im/fsharplang_ru/Lobby" target="_blank">Чат в Gitter</a></li>
+                <li><a href="https://t.me/fsharp_chat" target="_blank">Чат в Telegram</a></li>
+                <li><a href="http://fsharp.org/" target="_blank">Официальный сайт F#</a></li>
               </ul>
             </li>
-            <li><a href="http://fsharp.org/learn.html" target="_blank">Уроки</a></li>
-            <li><a href="http://fsharp.org/" target="_blank">Разработка</a></li>
           </ul>
         </div>
       </div>
@@ -58,11 +61,12 @@
               F# позволяет разработчикам решать сложные задачи с помощью простого и выразительного кода.
             </p>
             <p>
-              <a class="btn btn-primary btn-lg">Узнать больше о F#</a>
+              <a class="btn btn-primary btn-lg scrollable" href="#code-snippets">
+                Узнать больше о F#
+              </a>
             </p>
           </div>
           <div class="col-sm-5">
-            <!-- pass place -->
           </div>
         </div>
       </div>
@@ -85,10 +89,10 @@
 
     <section>
       <div class="container content-width">
-        <h1 class="margin-top margin-bottom">
+        <h1 id="code-snippets" class="margin-top margin-bottom">
           Как выглядит F#?
           <small>
-            Самые простые примеры.
+            Самые простые примеры кода.
           </small>
         </h1>
         <ul class="nav nav-tabs">
@@ -132,10 +136,10 @@ let main argv =
 
     <section class="dark-background">
       <div class="container content-width">
-        <h1 class="margin-top">
+        <h1 id="top-reasons" class="margin-top">
           Почему F#?
           <small>
-            Несколько причин попробовать этот язык.
+            Несколько причин обратить внимание на этот язык.
           </small>
         </h1>
         <div class="row margin-top margin-bottom">
@@ -181,7 +185,7 @@ let main argv =
 
     <section>
       <div class="container content-width">
-        <h1 class="margin-top margin-bottom">
+        <h1 id="online-compiler" class="margin-top margin-bottom">
           Попробуйте сами!
           <small>
             Скомпилируйте свой первый F# скрипт онлайн.
@@ -213,8 +217,8 @@ let main argv =
 
     <section class="dark-background">
       <div class="container content-width">
-        <h1 class="margin-bottom">
-          Обучающие видео
+        <h1 id="video-lessons" class="margin-bottom">
+          Обучающие видео.
           <small>
             Уроки, которые помогут вам научиться F#!
           </small>
@@ -235,6 +239,16 @@ let main argv =
 
     <script type="text/javascript">
       (function($) {
+
+        // Register smooth animators
+        const bodyPart = $('html, body');
+        $('a.scrollable').click(function(event) {
+          event.preventDefault();
+          bodyPart.animate({
+            scrollTop: $( $.attr(this, 'href') ).offset().top
+          }, 500);
+          return false;
+        });
 
         // Init highlight.JS for syntax highlighting
         hljs.initHighlightingOnLoad();
