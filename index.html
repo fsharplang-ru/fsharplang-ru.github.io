@@ -34,7 +34,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a class="scrollable" href="#code-snippets">Примеры кода</a></li>
             <li><a class="scrollable" href="#top-reasons">Почему F#</a></li>
-            <li><a class="scrollable" href="#online-compiler">Компилятор</a></li>
+            <li><a class="scrollable" href="#online-compiler">Компилятор онлайн</a></li>
             <li><a class="scrollable" href="#video-lessons">Уроки</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -209,8 +209,16 @@ let main argv =
                 <div id="run-status-box" class="code-box"></div>
                 <div id="run-warnings-box" class="code-box warning"></div>
                 <div id="run-errors-box" class="code-box error"></div>
-                <code id="run-result-box"></code>
+                <code id="run-result-box">0 </code>
               </div>
+              <p>
+                Возникли трудности? <br/>
+                Напишите нам в 
+                <a href="https://t.me/fsharp_chat">Telegram</a> 
+                или 
+                <a href="https://gitter.im/fsharplang_ru/Lobby">Gitter</a> 
+                и мы с радостью вам поможем!
+              </p>
             </p>
           </div>
         </div>
@@ -280,7 +288,7 @@ let main argv =
             Copyright © 2017 fsharplang.ru — Русскоязычное сообщество разработчиков F#
             <br />
             <small>
-              <a target="_blank" href="https://worldbeater.github.io" style="opacity: 0.7">
+              <a target="_blank" href="https://worldbeater.github.io">
                 Designed by Worldbeater
               </a>
             </small>
@@ -315,12 +323,23 @@ let main argv =
 
         // Set initial content of Monaco editor
         const initialCodeContent =
-`// Точка входа приложения, эквивалент main()
+`// Фигура
+type Shape =
+    | Rectangle of height : float * width : float
+    | Ellipse of height : float * width : float
+
+// Функция, вычисляющая площадь фигуры
+let area shape = 
+    match shape with
+    | Rectangle(h, w) -> h * w
+    | Ellipse(h, w) -> System.Math.PI * h * w
+
+// Точка входа приложения, эквивалент main()
 [<EntryPoint>]
 let main argv =
-    printfn "%A" argv
-    0 // возвращает код завершения приложения\n\n\n\n
-        `;
+    let ellipse = Ellipse(2., 1.)
+    printfn "%A" (area ellipse)
+    0 // код завершения приложения\n`;
 
         // Launch Monaco online editor
         require.config({ paths: { 'vs': 'monaco/min/vs' }});
