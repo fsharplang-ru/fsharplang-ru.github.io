@@ -16,7 +16,7 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid content-width">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="">
             <img src="./img/min_logo.png" class="inline-block logo" />
             Русскоязычное сообщество F#
           </a>
@@ -43,6 +43,7 @@
               <ul class="dropdown-menu" role="menu">
                 <li><a href="https://gitter.im/fsharplang_ru/Lobby" target="_blank">Чат в Gitter</a></li>
                 <li><a href="https://t.me/fsharp_chat" target="_blank">Чат в Telegram</a></li>
+                <li><a href="https://github.com/fsharplang-ru" target="_blank">Мы на GitHub</a></li>
                 <li><a href="http://fsharp.org/" target="_blank">Официальный сайт F#</a></li>
               </ul>
             </li>
@@ -51,7 +52,7 @@
       </div>
     </nav>
 
-    <section class="front-bgr" style="background-image: url(img/mock.jpg);">
+    <section class="front-bgr">
       <div class="jumbotron content-width container">
         <div class="light row">
           <div class="col-sm-7">
@@ -78,7 +79,7 @@
         <div class="row light">
           <div class="col-sm-10">
             <p class="light note margin-top margin-bottom">
-              Вы находитесь на сайте русскоязычного сообщества F# разработчиков! F# — это мультипарадигмальный язык программирования из семейства языков .NET Framework, поддерживающий функциональное программирование в дополнение к императивному и объектно-ориентированному программированию. 
+              F# — это мультипарадигмальный язык программирования из семейства языков .NET Framework, поддерживающий функциональное программирование в дополнение к императивному и объектно-ориентированному программированию. 
             </p>
           </div>
           <div class="col-sm-2 text-center">
@@ -218,7 +219,7 @@ let main argv =
 
     <section class="dark-background">
       <div class="container content-width">
-        <h1 id="video-lessons" class="margin-bottom">
+        <h1 id="video-lessons" class="margin-top margin-bottom">
           Обучающие видео.
           <small>
             Уроки, которые помогут вам научиться F#!
@@ -238,6 +239,56 @@ let main argv =
       </div>
     </section>
 
+    <section class="darkest-background light">
+      <div class="container content-width footer">
+        <div class="row margin-top margin-bottom">
+          <div class="col-sm-2">
+            <p class="gray">Спросите нас</p>
+            <p><a target="_blank" href="https://t.me/fsharp_chat">Чат в Telegram</a></p>
+            <p><a target="_blank" href="https://gitter.im/fsharplang_ru/Lobby">Чат в Gitter</a></p>
+            <p><a target="_blank" href="https://github.com/fsharplang-ru">Наш Github</a></p>
+          </div>
+          <div class="col-sm-2">
+            <p class="gray">FSharp.org</p>
+            <p><a target="_blank" href="http://fsharp.org">Сайт проекта</a></p>
+            <p><a target="_blank" href="http://fsharp.org/learn.html">Обучение F#</a></p>
+            <p><a target="_blank" href="http://fsharp.org/about/index.html#documentation">Документация</a></p>
+            <p><a target="_blank" href="http://fsharp.org/specs/language-spec/">Спецификации</a></p>
+            <p><a target="_blank" href="http://fsharp.org/specs/component-design-guidelines/">Кодстайл</a></p>
+            <p><a target="_blank" href="https://github.com/fsharp">Github</a></p>
+          </div>
+          <div class="col-sm-2">
+            <p class="gray">Литература</p>
+            
+          </div>
+          <div class="col-sm-2">
+            <p class="gray">Мероприятия</p>
+
+          </div>
+          <div class="col-sm-2">
+            <p class="gray">Ещё</p>
+
+          </div>
+          <div class="col-sm-2">
+            <a href="https://github.com/fsharplang-ru">
+              <img class="logo-note" src="img/min_logo.png"/>
+            </a>
+          </div>
+        </div>
+        <div class="margin-top text-center">
+          <p class="rights">
+            Copyright © 2017 fsharplang.ru — Русскоязычное сообщество разработчиков F#
+            <br />
+            <small>
+              <a target="_blank" href="https://worldbeater.github.io" style="opacity: 0.7">
+                Designed by Worldbeater
+              </a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <script type="text/javascript">
       (function($) {
 
@@ -246,7 +297,7 @@ let main argv =
         $('a.scrollable').click(function(event) {
           event.preventDefault();
           bodyPart.animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top
+            scrollTop: $( $.attr(this, 'href') ).offset().top - 80
           }, 500);
           return false;
         });
@@ -268,8 +319,7 @@ let main argv =
 [<EntryPoint>]
 let main argv =
     printfn "%A" argv
-    System.Console.WriteLine("Привет, мир F#")
-    0 // возвращает код завершения приложения\n\n\n
+    0 // возвращает код завершения приложения\n\n\n\n
         `;
 
         // Launch Monaco online editor
@@ -288,7 +338,7 @@ let main argv =
             statusBox.text('ⓧ Ошибка').removeClass('success').removeClass('warning').addClass('error');
           };
           const enterWarningState = () => {
-            statusBox.text('⚠ Предупреждение') .removeClass('success').addClass('warning').removeClass('error');
+            statusBox.text('⚠ Предупреждение').removeClass('success').addClass('warning').removeClass('error');
           };
           const enterSuccessState = () => {
             statusBox.text('✔ Успех').addClass('success').removeClass('warning').removeClass('error');
