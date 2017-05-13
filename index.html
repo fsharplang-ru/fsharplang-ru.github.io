@@ -327,13 +327,13 @@ let main argv =
 `// Фигура
 type Shape =
     | Rectangle of height : float * width : float
-    | Ellipse of height : float * width : float
+    | Ellipse of radiusV : float * radiusH : float
 
 // Функция, вычисляющая площадь фигуры
 let area shape = 
     match shape with
     | Rectangle(h, w) -> h * w
-    | Ellipse(h, w) -> System.Math.PI * h * w
+    | Ellipse(rv, rh) -> System.Math.PI * rv * rh
 
 // Точка входа приложения, эквивалент main()
 [<EntryPoint>]
