@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/favicon.ico?v=1.1"> 
+    <link rel="icon" href="./img/favicon.ico?v=1.1">
     <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="./css/additional.css" />
@@ -80,7 +80,7 @@
         <div class="row light">
           <div class="col-sm-10">
             <p class="light note margin-top margin-bottom">
-              F# — это мультипарадигмальный язык программирования из семейства языков .NET Framework, поддерживающий функциональное программирование в дополнение к императивному и объектно-ориентированному программированию. 
+              F# — это мультипарадигмальный язык программирования из семейства языков .NET Framework, поддерживающий функциональное программирование в дополнение к императивному и объектно-ориентированному программированию.
             </p>
           </div>
           <div class="col-sm-2 text-center">
@@ -127,7 +127,7 @@ let main argv =
             </code></pre>
           </div>
           <div class="tab-pane fade" id="pipelines">
-            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">let messages = 
+            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">let messages =
     friends
     |> Seq.map (fun x -> x.Messages)
     |> Seq.concat
@@ -214,10 +214,10 @@ let main argv =
               </div>
               <p>
                 Возникли трудности? <br/>
-                Напишите нам в 
-                <a href="https://t.me/fsharp_chat">Telegram</a> 
-                или 
-                <a href="https://gitter.im/fsharplang_ru/Lobby">Gitter</a> 
+                Напишите нам в
+                <a href="https://t.me/fsharp_chat">Telegram</a>
+                или
+                <a href="https://gitter.im/fsharplang_ru/Lobby">Gitter</a>
                 и мы с радостью вам поможем!
               </p>
             </p>
@@ -268,7 +268,7 @@ let main argv =
           </div>
           <div class="col-sm-2">
             <p class="gray">Литература</p>
-            
+
           </div>
           <div class="col-sm-2">
             <p class="gray">Мероприятия</p>
@@ -324,23 +324,23 @@ let main argv =
 
         // Set initial content of Monaco editor
         const initialCodeContent =
-`// Фигура
-type Shape =
-    | Rectangle of height : float * width : float
-    | Ellipse of radiusV : float * radiusH : float
-
-// Функция, вычисляющая площадь фигуры
-let area shape = 
-    match shape with
-    | Rectangle(h, w) -> h * w
-    | Ellipse(rv, rh) -> System.Math.PI * rv * rh
-
-// Точка входа приложения, эквивалент main()
-[<EntryPoint>]
-let main argv =
-    let ellipse = Ellipse(2., 1.)
-    printfn "%A" (area ellipse)
-    0 // код завершения приложения\n`;
+"// Фигура\n" +
+"type Shape =\n" +
+"    | Rectangle of height : float * width : float\n" +
+"    | Ellipse of radiusV : float * radiusH : float\n" +
+"\n" +
+"// Функция, вычисляющая площадь фигуры\n" +
+"let area shape = \n" +
+"    match shape with\n" +
+"    | Rectangle(h, w) -> h * w\n" +
+"    | Ellipse(rv, rh) -> System.Math.PI * rv * rh\n" +
+"\n" +
+"// Точка входа приложения, эквивалент main()\n" +
+"[<EntryPoint>]\n" +
+"let main argv =\n" +
+"    let ellipse = Ellipse(2., 1.)\n" +
+"    printfn \"%A\" (area ellipse)\n" +
+"    0 // код завершения приложения\n";
 
         // Launch Monaco online editor
         require.config({ paths: { 'vs': 'monaco/min/vs' }});
@@ -354,13 +354,13 @@ let main argv =
 
         // Register events
         runButton.click(function() {
-          const enterErrorState = () => {
+          const enterErrorState = function () {
             statusBox.text('ⓧ Ошибка').removeClass('success').removeClass('warning').addClass('error');
           };
-          const enterWarningState = () => {
+          const enterWarningState = function () {
             statusBox.text('⚠ Предупреждение').removeClass('success').addClass('warning').removeClass('error');
           };
-          const enterSuccessState = () => {
+          const enterSuccessState = function () {
             statusBox.text('✔ Успех').addClass('success').removeClass('warning').removeClass('error');
           };
 
@@ -375,24 +375,27 @@ let main argv =
           runButton.addClass('disabled');
           $.ajax({
             type: 'POST',
-            url,
+            url: url,
             data: params
-          }).done(({Warnings, Errors, Result}) => {
-            warningsBox.text(Warnings);
-            errorsBox.text(Errors);
-            resultBox.text(Result);
-            if (Errors) {
+          }).done(function (data) {
+            const warnings = data.Warnings;
+            const errors = data.Errors;
+            const result = data.Result;
+            warningsBox.text(warnings);
+            errorsBox.text(errors);
+            resultBox.text(result);
+            if (errors) {
               enterErrorState();
-            } else if (Warnings) {
+            } else if (warnings) {
               enterWarningState();
             } else {
               enterSuccessState();
             }
-          }).fail(() => {
+          }).fail(function () {
             warningsBox.clear();
             errorsBox.text('ⓧ Сетевая ошибка. Пожалуйста, повторите запрос.');
             enterErrorState();
-          }).always(() => {
+          }).always(function () {
             runButton.removeClass('disabled');
           });
         });
