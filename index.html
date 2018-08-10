@@ -113,17 +113,17 @@ let main argv =
             </code></pre>
           </div>
           <div class="tab-pane fade" id="concise-syntax">
-            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">let rec fib n a b = match n with
-    | 0 -> a
-    | 1 -> b
+            <pre class="margin-top managed-code-block"><code class="fsharp code-holder">let rec fib n a b = 
+    match n with
+    | 0 -> a | 1 -> b
     | _ -> fib (n - 1) b (a + b)
             </code></pre>
           </div>
           <div class="tab-pane fade" id="type-system">
             <pre class="margin-top managed-code-block"><code class="fsharp code-holder">type ContactInfo =
-    | EmailOnly of EmailInfo
-    | PostOnly of PostInfo
-    | EmailPost of EmailInfo * PostInfo
+| EmailOnly of EmailInfo
+| PostOnly of PostInfo
+| EmailPost of EmailInfo * PostInfo
             </code></pre>
           </div>
           <div class="tab-pane fade" id="pipelines">
@@ -266,17 +266,12 @@ let main argv =
             <p><a target="_blank" href="http://fsharp.org/specs/component-design-guidelines/">Кодстайл</a></p>
             <p><a target="_blank" href="https://github.com/fsharp">Github</a></p>
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-6">
             <p class="gray">Литература</p>
-
-          </div>
-          <div class="col-sm-2">
-            <p class="gray">Мероприятия</p>
-
-          </div>
-          <div class="col-sm-2">
-            <p class="gray">Ещё</p>
-
+            <p><a target="_blank" href="https://habr.com/company/microsoft/blog/335560/">Погружение в F#. Пособие для C#-разработчиков</a></p>
+            <p><a target="_blank" href="https://habr.com/company/microsoft/blog/348460/">Тонкости value restriction в F#</a></p>
+            <p><a target="_blank" href="https://habr.com/post/350538/">Знакомство с Gjallarhorn.Bindable.WPF</a></p>
+            <p><a target="_blank" href="https://habr.com/company/microsoft/blog/415189/">Функциональное мышление</a></p>
           </div>
           <div class="col-sm-2">
             <a href="https://github.com/fsharplang-ru">
@@ -326,14 +321,14 @@ let main argv =
         const initialCodeContent =
 "// Фигура\n" +
 "type Shape =\n" +
-"    | Rectangle of height : float * width : float\n" +
-"    | Ellipse of radiusV : float * radiusH : float\n" +
+"| Rectangle of height: float * width: float\n" +
+"| Ellipse of radiusV: float * radiusH: float\n" +
 "\n" +
 "// Функция, вычисляющая площадь фигуры\n" +
 "let area shape = \n" +
 "    match shape with\n" +
-"    | Rectangle(h, w) -> h * w\n" +
-"    | Ellipse(rv, rh) -> System.Math.PI * rv * rh\n" +
+"    | Rectangle (h, w) -> h * w\n" +
+"    | Ellipse (rv, rh) -> System.Math.PI * rv * rh\n" +
 "\n" +
 "// Точка входа приложения, эквивалент main()\n" +
 "[<EntryPoint>]\n" +
